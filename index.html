@@ -57,4 +57,21 @@
     }catch(e){}
   });
 })();
-</script><script>(function(){var CO="https://go.centerpag.com/PPU38CQFAO3";function dest(){return CO+(location.search||"");}function wire(){[].slice.call(document.querySelectorAll("button")).filter(function(b){return(b.className||"").indexOf("oklch(0.62_0.18_150)")>-1;}).forEach(function(b){b.style.cursor="pointer";b.addEventListener("click",function(e){e.preventDefault();window.location.href=dest();});});}if(document.readyState!=="loading"){wire();}else{document.addEventListener("DOMContentLoaded",wire);}})();</script></body></html>
+</script><script>(function(){var CO="https://go.centerpag.com/PPU38CQFAO3";function dest(){return CO+(location.search||"");}function wire(){[].slice.call(document.querySelectorAll("button")).filter(function(b){return(b.className||"").indexOf("oklch(0.62_0.18_150)")>-1;}).forEach(function(b){b.style.cursor="pointer";b.addEventListener("click",function(e){e.preventDefault();window.location.href=dest();});});}if(document.readyState!=="loading"){wire();}else{document.addEventListener("DOMContentLoaded",wire);}})();</script><script>
+(function(){
+  // Back-redirect: ao tentar sair (botão VOLTAR do navegador), leva o lead à página de downsell.
+  // Dispara só no evento popstate (botão voltar) — NÃO afeta os cliques nos botões de checkout.
+  var link = "https://silly-alpaca-3ad67f.netlify.app/";
+  function setBackRedirect(url){
+    var qs = document.location.search.replace('?','');
+    var urlBackRedirect = url.trim() + (qs ? ((url.indexOf('?') > 0 ? '&' : '?') + qs) : '');
+    history.pushState({}, '', location.href);
+    history.pushState({}, '', location.href);
+    history.pushState({}, '', location.href);
+    window.addEventListener('popstate', function(){
+      setTimeout(function(){ location.href = urlBackRedirect; }, 1);
+    });
+  }
+  setBackRedirect(link);
+})();
+</script></body></html>
